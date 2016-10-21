@@ -1,3 +1,26 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+    <h1 id="title">TODO LIST APP</h1>
+    
+    <div id="addTask">
+        <input id="newTask" placeholder="Enter Task Here..." #newTask
+        
+            (keyup.enter)="addTask(newTask.value); newTask.value='' "
+        >
+
+        <button class="add" (click)="addTask(newTask.value); newTask.value=''">Add</button>
+    </div>
+</div>
+
+<ul id="taskList">
+    <li *ngFor="let item of tasks">
+        <input class="done" type="checkbox" (click)="taskDone(done.checked)" #done>
+        <h4>{{item}}</h4>
+        <button class="dlt" (click)="deleteTask($event, item, done.checked)">X</button>
+    </li>
+</ul>
+  
+<ul id="details">
+     <li>Total Tasks: {{totalTask}}</li>
+     <li>Pending Tasks: {{pending}}</li>
+     <li>Completed Tasks: {{completed}}</li>
+</ul>
